@@ -1,31 +1,38 @@
-import { NavLink, Link } from "react-router-dom";
-import { Pause, RotateCcw, Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Pause, House, Trophy } from "lucide-react";
 import "./Navbar.css";
 
-export default function Navbar({ score }) {
+export default function Navbar({ score, onPauseClick, handleRestart }) {
   return (
-    <>
-      <nav>
-        <span className="score">
-          <ul>
-            <li>Score:</li>
-            <li>{score}</li>
-          </ul>
-        </span>
-        <span className="nav-menu">
-          <ul>
+    <nav>
+      <span className="score-container">
+        <ul>
+          <li>Score:</li>
+          <li>{score}</li>
+        </ul>
+      </span>
+
+      <span className="nav-menu">
+        <ul>
+          <Link to="/" aria-label="Back to menu" onClick={() => handleRestart()}>
             <li className="glow-on-hover">
-              <Link to="/"><RotateCcw color="white" /></Link>
+              <House color="white" />
             </li>
+          </Link>
+
+          <button type="button" onClick={onPauseClick} aria-label="Pause game" className="nav-button">
             <li className="glow-on-hover">
-              <NavLink to="/pause" end><Pause color="white" /></NavLink>
+              <Pause color="white" />
             </li>
+          </button>
+
+          <Link to="/top_score" aria-label="View top score">
             <li className="glow-on-hover">
-              <NavLink to="/top_score" end><Trophy color="white" /></NavLink>
+              <Trophy color="white" />
             </li>
-          </ul>
-        </span>
-      </nav>
-    </>
-  )
+          </Link>
+        </ul>
+      </span>
+    </nav>
+  );
 }
