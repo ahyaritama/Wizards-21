@@ -12,7 +12,7 @@ export default function Pause({ isOpen, onResume, onRestart, setIsPaused }) {
           <button className="btn-primary" onClick={onResume}>
             <Play size={18} /> Resume
           </button>
-          <Link className="btn-secondary" onClick={(onRestart)}>
+          <Link to="/game" className="btn-secondary" onClick={(onRestart)}>
             <RotateCcw size={18} /> Restart Game
           </Link>
           <Link to="/" className="btn-secondary" onClick={() => setIsPaused(false)}>
